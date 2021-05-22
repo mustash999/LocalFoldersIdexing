@@ -3,13 +3,6 @@
 
 
 
-
-
-
-
-
-
-
 #Importing library 
 import os
 import os.path
@@ -29,7 +22,18 @@ def lsdir(path):
 
 #Identifying the main Folder // drive 
 
-mainfolder= "TestFolder/"
+path=input("Enter the path to folder:  Example:: C:\\Windows\\")
+if path == None:
+    path= "C:\\"
+mainfolder= path.replace("\\", "/")
+
+
+txtfile= input("Enter the file name [txtfile.txt] ")
+if txtfile == None:
+    txtfile="txtfile.txt"
+
+
+
 
 #Creating the seed list 
 remainingpath= lsdir(mainfolder)
@@ -37,7 +41,7 @@ remainingpath= lsdir(mainfolder)
 
 #Looping thorughtout the list  writing results to a text file
 while len(remainingpath) > 0:
-    with open("foldersWithin_TestFolder.txt", "a") as f:
+    with open( txtfile, "a") as f:
         for folder in remainingpath:
             try:
                 print((str(folder.encode("utf-8")))+",", file=f)
